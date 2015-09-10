@@ -1,14 +1,18 @@
-﻿using System;
+﻿using ExpandedEnglish.Config;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedEnglish
 {
     public class Expander : IExpander
     {
-        private Dictionary<string, string> _conversions = new Dictionary<string,string>();
+        private Dictionary<string, string> _conversions = new Dictionary<string, string>();
+
+        public Expander()
+        {
+            GetConversions();
+        }
 
         public string Expand(string sentenceToExpand)
         {
@@ -26,7 +30,10 @@ namespace ExpandedEnglish
 
         private void GetConversions()
         {
+            var config = ExpandedEnglishConfig.Open();
 
+            foreach (var item in config.Conversions)
+                _conversions.Add(item.From, item.To);
         }
 
         private string ExpandWord(string word)
@@ -38,7 +45,7 @@ namespace ExpandedEnglish
             {
                 if (wordLower.Contains(conversion.Key.ToLower()))
                 {
-                    wordLower.Replace(conversion.Key.ToLower(), conversion.Value);
+                    wordLower = wordLower.Replace(conversion.Key.ToLower(), conversion.Value);
 
                     if (isCap)
                         wordLower = wordLower.First().ToString().ToUpper() + wordLower.Substring(1);

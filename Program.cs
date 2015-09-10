@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedEnglish
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             IExpander expander = new Expander();
 
@@ -18,7 +14,7 @@ namespace ExpandedEnglish
 
                 var sentence = Console.ReadLine();
                 var expandedSentence = expander.Expand(sentence);
-                
+
                 Console.WriteLine(string.Format("expanded result: {0}", expandedSentence));
                 Console.WriteLine();
 

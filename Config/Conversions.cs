@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedEnglish.Config
 {
     [ConfigurationCollection(typeof(Conversion), AddItemName = "add", RemoveItemName = "remove", ClearItemsName = "clear")]
     public class Conversions : ConfigurationElementCollection, IEnumerable<Conversion>
     {
-        [ConfigurationProperty("LoadAtStartup", IsRequired = false, DefaultValue = true)]
-        public bool LoadAtStartup
-        {
-            get { return (bool)base["LoadAtStartup"]; }
-            set { base["LoadAtStartup"] = value; }
-        }
-
         protected override ConfigurationElement CreateNewElement()
         {
             return new Conversion();
