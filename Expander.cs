@@ -11,7 +11,10 @@ namespace ExpandedEnglish
 
         public Expander()
         {
-            GetConversions();
+            var config = ExpandedEnglishConfig.Open();
+
+            foreach (var item in config.Conversions)
+                _conversions.Add(item.From, item.To);
         }
 
         public string Expand(string sentenceToExpand)
@@ -26,14 +29,6 @@ namespace ExpandedEnglish
             }
 
             return sb.ToString().Trim();
-        }
-
-        private void GetConversions()
-        {
-            var config = ExpandedEnglishConfig.Open();
-
-            foreach (var item in config.Conversions)
-                _conversions.Add(item.From, item.To);
         }
 
         private string ExpandWord(string word)
