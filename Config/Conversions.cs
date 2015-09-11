@@ -27,9 +27,9 @@ namespace ExpandedEnglish.Config
             get { return (Conversion)BaseGet(id); }
         }
 
-        public void Add(Conversion file)
+        public void Add(Conversion conversion)
         {
-            BaseAdd(file);
+            BaseAdd(conversion);
         }
 
         public void Clear()
@@ -37,9 +37,9 @@ namespace ExpandedEnglish.Config
             BaseClear();
         }
 
-        public void Remove(Conversion file)
+        public void Remove(Conversion conversion)
         {
-            BaseRemove(file);
+            BaseRemove(conversion);
         }
 
         public void RemoveAt(int index)

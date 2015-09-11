@@ -13,7 +13,7 @@ namespace ExpandedEnglish.Config
 
         static ExpandedEnglishConfig()
         {
-            var config = ConfigurationManager.OpenExeConfiguration(Assembly.GetEntryAssembly().Location);
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             _instance = (ExpandedEnglishConfig)config.Sections[ConfigSectionName];
         }
 
